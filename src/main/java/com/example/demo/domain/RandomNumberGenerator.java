@@ -1,2 +1,6 @@
-package com.example.demo.domain;public class RandomNumberGenerator {
+package com.example.demo.domain;
+
+public interface RandomNumberGenerator {
+
+    int generate();
 }
