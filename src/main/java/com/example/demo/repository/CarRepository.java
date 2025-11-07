@@ -1,14 +1,12 @@
 package com.example.demo.repository;
 
-import com.example.demo.domain.Member;
+import com.example.demo.domain.Car;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface MemberRepository {
+public interface CarRepository {
 
-    Member save(Member member);
-    Optional<Member> findById(Long id);
-    Optional<Member> findByName(String name);
-    List<Member> findAll();
+    Car save(Car car);
+    void deleteAll();
+    List<Car> findAll();
 }
