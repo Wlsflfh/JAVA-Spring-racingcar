@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class PastWinners {
+public class Winners {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +18,9 @@ public class PastWinners {
     @Column(name = "name")
     private List<String> winners;
 
-    public PastWinners() {}
+    public Winners() {}
 
-    public PastWinners(List<String> winners) {
+    public Winners(List<String> winners) {
         this.winners = winners;
     }
 
