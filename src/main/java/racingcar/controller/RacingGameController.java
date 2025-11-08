@@ -1,9 +1,9 @@
-package com.example.demo.controller;
+package racingcar.controller;
 
-import com.example.demo.domain.AttemptsCount;
-import com.example.demo.domain.Cars;
-import com.example.demo.dto.RaceResultDto;
-import com.example.demo.service.RacingGameService;
+import racingcar.domain.AttemptsCount;
+import racingcar.domain.Cars;
+import racingcar.dto.RaceResultDto;
+import racingcar.service.RacingGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

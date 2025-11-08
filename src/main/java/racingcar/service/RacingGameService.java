@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package racingcar.service;
 
-import com.example.demo.domain.*;
-import com.example.demo.dto.CarNamesDto;
-import com.example.demo.dto.RaceResultDto;
-import com.example.demo.repository.CarRepository;
-import com.example.demo.repository.WinnerRepository;
+import racingcar.domain.*;
+import racingcar.dto.CarNamesDto;
+import racingcar.dto.RaceResultDto;
+import racingcar.repository.CarRepository;
+import racingcar.repository.SpringDataJpaWinnerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,12 +15,12 @@ import java.util.List;
 public class RacingGameService {
 
     private final CarRepository carRepository;
-    private final WinnerRepository winnerRepository;
+    private final SpringDataJpaWinnerRepository springDataJpaWinnerRepository;
 
     @Autowired
-    public RacingGameService(CarRepository carRepository, WinnerRepository winnerRepository) {
+    public RacingGameService(CarRepository carRepository, SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
         this.carRepository = carRepository;
-        this.winnerRepository = winnerRepository;
+        this.springDataJpaWinnerRepository = springDataJpaWinnerRepository;
     }
 
     public void saveCars(Cars cars) {
@@ -33,7 +33,7 @@ public class RacingGameService {
 
     public void saveWinners(List<String> winners) {
         Winners pastWinners = new Winners(winners);
-        winnerRepository.save(pastWinners);
+        springDataJpaWinnerRepository.save(pastWinners);
     }
 
     public RaceResultDto playRace(AttemptsCount attemptsCount) {
@@ -45,7 +45,6 @@ public class RacingGameService {
 
             for (Car car : findCars()) {
                 car.move(carRandomMoveGenerator.generate());
-                System.out.println(car.getPosition());
                 roundResults.add(new RoundResult(car.getName(), car.getPosition()));
             }
 

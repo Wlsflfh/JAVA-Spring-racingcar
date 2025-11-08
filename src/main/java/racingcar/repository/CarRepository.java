@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package racingcar.repository;
 
-import com.example.demo.domain.Car;
+import racingcar.domain.Car;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package racingcar.dto;
 
 import java.util.List;
 

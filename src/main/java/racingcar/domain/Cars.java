@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package racingcar.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;

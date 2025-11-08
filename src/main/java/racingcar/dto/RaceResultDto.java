@@ -1,6 +1,6 @@
-package com.example.demo.dto;
+package racingcar.dto;
 
-import com.example.demo.domain.RoundResult;
+import racingcar.domain.RoundResult;
 
 import java.util.List;
 
