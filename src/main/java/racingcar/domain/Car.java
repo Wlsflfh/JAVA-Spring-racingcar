@@ -33,10 +33,6 @@ public class Car {
         }
     }
 
-    public boolean isWinner(int maxPosition) {
-        return position == maxPosition;
-    }
-
     private boolean isMoving(int randomNumber) {
         return randomNumber >= MOVING_THRESHOLD;
     }
