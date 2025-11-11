@@ -25,10 +25,7 @@ public class RacingGameService {
 
     public void saveCars(Cars cars) {
         springDataJpaCarRepository.deleteAll();
-
-        for (Car car : cars.getCars()) {
-            springDataJpaCarRepository.save(car);
-        }
+        springDataJpaCarRepository.saveAll(cars.getCars());
     }
 
     public void saveWinners(List<String> winners) {
