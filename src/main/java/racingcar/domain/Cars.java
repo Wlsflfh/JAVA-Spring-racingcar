@@ -15,13 +15,6 @@ public class Cars {
         this.cars = getCarNames(carNames);
     }
 
-    public List<Car> findWinners() {
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .toList();
-    }
-
     private List<String> splitCarNames(String inputCarNames) {
         validateEmptyInput(inputCarNames);
 
@@ -39,13 +32,6 @@ public class Cars {
                 .map(String::trim)
                 .map(Car::new)
                 .toList();
-    }
-
-    private int getMaxPosition() {
-        return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElse(0);
     }
 
     private void validateDuplicateName(List<String> carNames) {
