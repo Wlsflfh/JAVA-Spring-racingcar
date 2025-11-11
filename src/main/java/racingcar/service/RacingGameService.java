@@ -3,7 +3,7 @@ package racingcar.service;
 import racingcar.domain.*;
 import racingcar.dto.CarNamesDto;
 import racingcar.dto.RaceResultDto;
-import racingcar.repository.CarRepository;
+import racingcar.repository.SpringDataJpaCarRepository;
 import racingcar.repository.SpringDataJpaWinnerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +14,20 @@ import java.util.List;
 @Transactional
 public class RacingGameService {
 
-    private final CarRepository carRepository;
+    private final SpringDataJpaCarRepository springDataJpaCarRepository;
     private final SpringDataJpaWinnerRepository springDataJpaWinnerRepository;
 
     @Autowired
-    public RacingGameService(CarRepository carRepository, SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
-        this.carRepository = carRepository;
+    public RacingGameService(SpringDataJpaCarRepository springDataJpaCarRepository, SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
+        this.springDataJpaCarRepository = springDataJpaCarRepository;
         this.springDataJpaWinnerRepository = springDataJpaWinnerRepository;
     }
 
     public void saveCars(Cars cars) {
-        carRepository.deleteAll();
+        springDataJpaCarRepository.deleteAll();
 
         for (Car car : cars.getCars()) {
-            carRepository.save(car);
+            springDataJpaCarRepository.save(car);
         }
     }
 
@@ -85,6 +85,6 @@ public class RacingGameService {
     }
 
     private List<Car> findCars() {
-        return carRepository.findAll();
+        return springDataJpaCarRepository.findAll();
     }
 }
