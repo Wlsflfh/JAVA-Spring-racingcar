@@ -29,23 +29,23 @@ const RacingScreen = ({ carNames, raceHistory, randomNumbers, onComplete }) => {
         setShowRandoms(true);
         setIsExiting(false);
         
-        // 0.5초 후 주사위 퇴장 애니메이션 시작
+        // 1초 후 주사위 퇴장 애니메이션 시작
         setTimeout(() => {
           setIsExiting(true);
-        }, 500);
+        }, 1000);
         
-        // 0.7초 후 위치 업데이트 및 주사위 숨김
+        // 1.5초 후 위치 업데이트 및 주사위 숨김
         setTimeout(() => {
           setDisplayedPositions(raceHistory[currentRound]);
           setShowRandoms(false);
           setIsExiting(false);
-        }, 700);
+        }, 1500);
       } else {
         setDisplayedPositions(raceHistory[currentRound]);
       }
       
       setCurrentRound(prev => prev + 1);
-    }, 1200);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [currentRound, raceHistory, randomNumbers, onComplete]);

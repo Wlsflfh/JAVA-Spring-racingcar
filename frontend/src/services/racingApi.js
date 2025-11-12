@@ -3,7 +3,7 @@
  */
 
 const API_BASE_URL = '/api';
-const USE_MOCK = true; // 백엔드 없이 테스트할 때 true, 실제 API 사용시 false
+const USE_MOCK = false; // 백엔드 없이 테스트할 때 true, 실제 API 사용시 false
 
 /**
  * Mock 데이터 생성 (테스트용)

@@ -16,12 +16,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"}) // React 개발 서버
-public class RacingApiController {
+public class RacingGameApiController {
 
     private final RacingGameService racingGameService;
 
     @Autowired
-    public RacingApiController(RacingGameService racingGameService) {
+    public RacingGameApiController(RacingGameService racingGameService) {
         this.racingGameService = racingGameService;
     }
 
