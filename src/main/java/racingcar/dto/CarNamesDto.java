@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CarNamesDto {
 
-    private List<String> carNames;
+    private final List<String> carNames;
 
     public CarNamesDto(List<String> carNames) {
         this.carNames = carNames;

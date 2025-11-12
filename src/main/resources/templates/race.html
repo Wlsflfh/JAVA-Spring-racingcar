@@ -1,89 +1,89 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>🏁 경주 결과</title>
-    <style>
-        body {
-            font-family: "Noto Sans KR", sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f8f9fa;
-            color: #333;
-            margin-top: 50px;
-        }
-        h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .round, .winners-box {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px 25px;
-            margin: 10px 0;
-            width: 90%;
-            max-width: 1000px;
-        }
-        .car-result {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 5px 0;
-        }
-        .car-winners {
-            font-weight: bold;
-            width: 70px;
-        }
-        .track {
-            color: #ffb300;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-        }
-        .winners-box {
-            border: 2px solid #ffc107;
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #d17f00;
-        }
-        .winners-icon {
-            font-size: 1.5rem;
-        }
-        a {
-            margin-top: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-<h1>🏁 경주 결과</h1>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>🏁 경주 결과</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: "Noto Sans KR", sans-serif;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            align-items: center;-->
+<!--            background-color: #f8f9fa;-->
+<!--            color: #333;-->
+<!--            margin-top: 50px;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            color: #007bff;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        .round, .winners-box {-->
+<!--            background: white;-->
+<!--            border-radius: 12px;-->
+<!--            box-shadow: 0 2px 5px rgba(0,0,0,0.1);-->
+<!--            padding: 15px 25px;-->
+<!--            margin: 10px 0;-->
+<!--            width: 90%;-->
+<!--            max-width: 1000px;-->
+<!--        }-->
+<!--        .car-result {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 10px;-->
+<!--            margin: 5px 0;-->
+<!--        }-->
+<!--        .car-winners {-->
+<!--            font-weight: bold;-->
+<!--            width: 70px;-->
+<!--        }-->
+<!--        .track {-->
+<!--            color: #ffb300;-->
+<!--            font-size: 1.2rem;-->
+<!--            letter-spacing: 3px;-->
+<!--        }-->
+<!--        .winners-box {-->
+<!--            border: 2px solid #ffc107;-->
+<!--            text-align: center;-->
+<!--            font-size: 1.3rem;-->
+<!--            font-weight: bold;-->
+<!--            color: #d17f00;-->
+<!--        }-->
+<!--        .winners-icon {-->
+<!--            font-size: 1.5rem;-->
+<!--        }-->
+<!--        a {-->
+<!--            margin-top: 20px;-->
+<!--            color: #007bff;-->
+<!--            text-decoration: none;-->
+<!--        }-->
+<!--        a:hover {-->
+<!--            text-decoration: underline;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>🏁 경주 결과</h1>-->
 
-<!-- round: List<RoundResult> -->
-<div th:each="round, roundStat : ${raceResults.raceProgress}" class="round">
-    <h3>Round [[${roundStat.index + 1}]]</h3>
+<!--&lt;!&ndash; round: List<RoundResult> &ndash;&gt;-->
+<!--<div th:each="round, roundStat : ${raceResults.raceProgress}" class="round">-->
+<!--    <h3>Round [[${roundStat.index + 1}]]</h3>-->
 
-    <!-- result: RoundResult -->
-    <div th:each="result : ${round}" class="car-result">
-        <span class="car-winners" th:text="${result.carName}">pobi</span>
-        <span th:if="${result.currentPosition > 0}"
-              class="track"
-              th:each="i : ${#numbers.sequence(1, result.currentPosition)}">🚗</span>
-    </div>
-</div>
+<!--    &lt;!&ndash; result: RoundResult &ndash;&gt;-->
+<!--    <div th:each="result : ${round}" class="car-result">-->
+<!--        <span class="car-winners" th:text="${result.carName}">pobi</span>-->
+<!--        <span th:if="${result.currentPosition > 0}"-->
+<!--              class="track"-->
+<!--              th:each="i : ${#numbers.sequence(1, result.currentPosition)}">🚗</span>-->
+<!--    </div>-->
+<!--</div>-->
 
-<!-- 우승자 표시 -->
-<div class="winners-box">
-    <span class="winners-icon">🏆</span>
-    <span>최종 우승자: </span>
-    <span th:text="${#strings.listJoin(raceResults.winners, ', ')}">pobi, crong</span>
-</div>
+<!--&lt;!&ndash; 우승자 표시 &ndash;&gt;-->
+<!--<div class="winners-box">-->
+<!--    <span class="winners-icon">🏆</span>-->
+<!--    <span>최종 우승자: </span>-->
+<!--    <span th:text="${#strings.listJoin(raceResults.winners, ', ')}">pobi, crong</span>-->
+<!--</div>-->
 
-<a href="/" style="color:#2b6cb0;">🏠 홈으로</a>
-</body>
-</html>
+<!--<a href="/" style="color:#2b6cb0;">🏠 홈으로</a>-->
+<!--</body>-->
+<!--</html>-->

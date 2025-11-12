@@ -41,8 +41,6 @@ public class RacingGameService {
             List<RoundResult> roundResults = new ArrayList<>();
 
             for (Car car : findCars()) {
-//                car.move(carRandomMoveGenerator.generate());
-//                roundResults.add(new RoundResult(car.getName(), car.getPosition()));
                 int randomNumber = carRandomMoveGenerator.generate();
                 car.move(randomNumber);
                 roundResults.add(new RoundResult(car.getName(), car.getPosition(), randomNumber));

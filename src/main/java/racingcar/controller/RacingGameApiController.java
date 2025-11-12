@@ -7,6 +7,7 @@ import racingcar.domain.AttemptsCount;
 import racingcar.domain.Cars;
 import racingcar.domain.RoundResult;
 import racingcar.dto.RaceResultDto;
+import racingcar.dto.RacingRequest;
 import racingcar.service.RacingGameService;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"}) // React 개발 서버
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
 public class RacingGameApiController {
 
     private final RacingGameService racingGameService;
@@ -28,23 +29,18 @@ public class RacingGameApiController {
     @PostMapping("/racing/start")
     public ResponseEntity<?> startRacing(@RequestBody RacingRequest request) {
         try {
-            // 자동차 생성 및 저장
             String carNamesStr = String.join(",", request.getCarNames());
             Cars cars = new Cars(carNamesStr);
             racingGameService.saveCars(cars);
 
-            // 경주 실행
             AttemptsCount attemptsCount = new AttemptsCount(request.getRoundCount());
             RaceResultDto raceResultDto = racingGameService.playRace(attemptsCount);
 
-            // 우승자 저장
             racingGameService.saveWinners(raceResultDto.getWinners());
 
-            // 프론트엔드가 기대하는 형식으로 변환
             List<Map<String, Integer>> raceHistory = convertToRaceHistory(raceResultDto.getRaceProgress());
             List<Map<String, Integer>> randomNumbers = convertToRandomNumbers(raceResultDto.getRaceProgress());
 
-            // 응답 생성
             Map<String, Object> response = new HashMap<>();
             response.put("raceHistory", raceHistory);
             response.put("randomNumbers", randomNumbers);
@@ -97,27 +93,5 @@ public class RacingGameApiController {
                     return randoms;
                 })
                 .toList();
-    }
-
-    // 요청 DTO
-    static class RacingRequest {
-        private String[] carNames;
-        private int roundCount;
-
-        public String[] getCarNames() {
-            return carNames;
-        }
-
-        public void setCarNames(String[] carNames) {
-            this.carNames = carNames;
-        }
-
-        public int getRoundCount() {
-            return roundCount;
-        }
-
-        public void setRoundCount(int roundCount) {
-            this.roundCount = roundCount;
-        }
     }
 }
