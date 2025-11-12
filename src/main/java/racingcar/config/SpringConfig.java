@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.config;
 
 import racingcar.repository.SpringDataJpaCarRepository;
 import racingcar.repository.SpringDataJpaWinnerRepository;
