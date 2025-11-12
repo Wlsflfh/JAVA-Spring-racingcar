@@ -19,7 +19,7 @@ public class AttemptsCount {
         }
 
         if (attemptsCount > MAX_ATTEMPTS_COUNT) {
-            throw new IllegalArgumentException("시도 횟수는 20회 이하여야 합니다.");
+            throw new IllegalArgumentException("시도 횟수는 30회 이하여야 합니다.");
         }
     }
 
