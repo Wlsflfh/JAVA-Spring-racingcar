@@ -33,6 +33,10 @@ public class Car {
         }
     }
 
+    public void itemMove(int itemEffect) {
+        position += itemEffect;
+    }
+
     private boolean isMoving(int randomNumber) {
         return randomNumber >= MOVING_THRESHOLD;
     }
@@ -45,10 +49,6 @@ public class Car {
         if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.");
         }
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {

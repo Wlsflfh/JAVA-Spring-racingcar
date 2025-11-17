@@ -31,3 +31,40 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
+// ============================================
+// 프론트엔드 빌드 자동화
+// ============================================
+
+// 프론트엔드 빌드 태스크
+task buildFrontend(type: Exec) {
+	description = 'Build frontend using npm'
+	workingDir '../../frontend'
+
+	// Windows와 Unix 환경 모두 지원
+	if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+		commandLine 'cmd', '/c', 'npm run build'
+	} else {
+		commandLine 'sh', '-c', 'npm run build'
+	}
+}
+
+// 프론트엔드 빌드 결과물을 Spring Boot static 폴더로 복사
+task copyFrontend(type: Copy) {
+	description = 'Copy frontend build to Spring Boot static resources'
+	dependsOn buildFrontend
+
+	from '../../frontend/dist'
+	into 'src/main/resources/static'
+
+	doFirst {
+		// 기존 static 폴더 정리
+		delete 'src/main/resources/static'
+	}
+}
+
+// Spring Boot 빌드 시 자동으로 프론트엔드 빌드 포함
+tasks.named('processResources') {
+	dependsOn copyFrontend
+}

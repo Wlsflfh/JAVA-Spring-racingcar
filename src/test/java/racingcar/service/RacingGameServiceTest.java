@@ -9,10 +9,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import racingcar.domain.AttemptsCount;
 import racingcar.domain.Cars;
-import racingcar.domain.Winners;
+import racingcar.domain.ClassicWinners;
+import racingcar.domain.ItemWinners;
 import racingcar.dto.RaceResultDto;
 import racingcar.repository.SpringDataJpaCarRepository;
-import racingcar.repository.SpringDataJpaWinnerRepository;
+import racingcar.repository.SpringDataJpaClassicWinnerRepository;
+import racingcar.repository.SpringDataJpaItemWinnerRepository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,12 +32,16 @@ class RacingGameServiceTest {
     private SpringDataJpaCarRepository carRepository;
 
     @Autowired
-    private SpringDataJpaWinnerRepository winnerRepository;
+    private SpringDataJpaClassicWinnerRepository classicWinnerRepository;
+
+    @Autowired
+    private SpringDataJpaItemWinnerRepository ItemWinnerRepository;
 
     @BeforeEach
     void setUp() {
         carRepository.deleteAll();
-        winnerRepository.deleteAll();
+        classicWinnerRepository.deleteAll();
+        ItemWinnerRepository.deleteAll();
     }
 
     @Test
@@ -53,15 +59,15 @@ class RacingGameServiceTest {
     }
 
     @Test
-    @DisplayName("시도 횟수만큼 경주를 진행하고 결과를 반환한다")
-    void playRace_returnsRaceResult() {
+    @DisplayName("클래식 모드에서 시도 횟수만큼 경주를 진행하고 결과를 반환한다")
+    void playClassicRace() {
         // given
         Cars cars = new Cars("pobi,woni");
         racingGameService.saveCars(cars);
         AttemptsCount attemptsCount = new AttemptsCount(3);
 
         // when
-        RaceResultDto result = racingGameService.playRace(attemptsCount);
+        RaceResultDto result = racingGameService.playClassicRace(attemptsCount);
 
         // then
         assertThat(result.getRaceProgress()).hasSize(3);
@@ -70,16 +76,33 @@ class RacingGameServiceTest {
     }
 
     @Test
-    @DisplayName("우승자를 DB에 저장할 수 있다")
-    void saveWinners_storesWinnersInDb() {
+    @DisplayName("클래식 모드 우승자를 DB에 저장할 수 있다")
+    void saveClassicWinners() {
         // given
         List<String> winners = Arrays.asList("pobi", "woni");
 
         // when
-        racingGameService.saveWinners(winners);
+        racingGameService.saveClassicWinners(winners);
 
         // then
-        List<Winners> saved = winnerRepository.findAll();
+        List<ClassicWinners> saved = classicWinnerRepository.findAll();
+        assertThat(saved).hasSize(1);
+
+        List<String> winnerNames = saved.get(0).getWinners();
+        assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
+    }
+
+    @Test
+    @DisplayName("아이템 모드 우승자를 DB에 저장할 수 있다")
+    void saveItemWinners() {
+        // given
+        List<String> winners = Arrays.asList("pobi", "woni");
+
+        // when
+        racingGameService.saveItemWinners(winners);
+
+        // then
+        List<ItemWinners> saved = ItemWinnerRepository.findAll();
         assertThat(saved).hasSize(1);
 
         List<String> winnerNames = saved.get(0).getWinners();

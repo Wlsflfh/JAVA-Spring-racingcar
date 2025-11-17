@@ -1,10 +1,11 @@
 package racingcar.domain;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
-public class Winners {
+public class ItemWinners {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,15 +13,15 @@ public class Winners {
 
     @ElementCollection
     @CollectionTable(
-            name = "winner_names",
+            name = "item_winner_names",
             joinColumns = @JoinColumn(name = "winner_id")
     )
     @Column(name = "name")
     private List<String> winners;
 
-    public Winners() {}
+    public ItemWinners() {}
 
-    public Winners(List<String> winners) {
+    public ItemWinners(List<String> winners) {
         this.winners = winners;
     }
 

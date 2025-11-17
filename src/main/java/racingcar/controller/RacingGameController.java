@@ -2,7 +2,7 @@
 //
 //import racingcar.domain.AttemptsCount;
 //import racingcar.domain.Cars;
-//import racingcar.dto.RaceResultDto;
+//import racingcar.dto.ClassicRaceResultDto;
 //import racingcar.service.RacingGameService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
@@ -39,7 +39,7 @@
 //    public String startRace(@RequestParam("attempts") int attempts, Model model) {
 //        try {
 //            AttemptsCount attemptsCount = new AttemptsCount(attempts);
-//            RaceResultDto raceResultDto = racingGameService.playRace(attemptsCount);
+//            ClassicRaceResultDto raceResultDto = racingGameService.playClassicRace(attemptsCount);
 //
 //            model.addAttribute("raceResults", raceResultDto);
 //            model.addAttribute("carNames", racingGameService.getCarNames());

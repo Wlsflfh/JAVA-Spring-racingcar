@@ -1,7 +1,8 @@
 package racingcar.config;
 
 import racingcar.repository.SpringDataJpaCarRepository;
-import racingcar.repository.SpringDataJpaWinnerRepository;
+import racingcar.repository.SpringDataJpaClassicWinnerRepository;
+import racingcar.repository.SpringDataJpaItemWinnerRepository;
 import racingcar.service.RacingGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,16 +12,18 @@ import org.springframework.context.annotation.Configuration;
 public class SpringConfig {
 
     private final SpringDataJpaCarRepository springDataJpaCarRepository;
-    private final SpringDataJpaWinnerRepository springDataJpaWinnerRepository;
+    private final SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository;
+    private final SpringDataJpaItemWinnerRepository springDataJpaItemWinnerRepository;
 
     @Autowired
-    public SpringConfig(SpringDataJpaCarRepository springDataJpaCarRepository, SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
+    public SpringConfig(SpringDataJpaCarRepository springDataJpaCarRepository, SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository, SpringDataJpaItemWinnerRepository springDataJpaItemWinnerRepository) {
         this.springDataJpaCarRepository = springDataJpaCarRepository;
-        this.springDataJpaWinnerRepository = springDataJpaWinnerRepository;
+        this.springDataJpaClassicWinnerRepository = springDataJpaClassicWinnerRepository;
+        this.springDataJpaItemWinnerRepository = springDataJpaItemWinnerRepository;
     }
 
     @Bean
     public RacingGameService racingGameService() {
-        return new RacingGameService(springDataJpaCarRepository, springDataJpaWinnerRepository);
+        return new RacingGameService(springDataJpaCarRepository, springDataJpaClassicWinnerRepository, springDataJpaItemWinnerRepository);
     }
 }

@@ -1,7 +1,7 @@
 //package racingcar.controller;
 //
 //import racingcar.domain.Winners;
-//import racingcar.repository.SpringDataJpaWinnerRepository;
+//import racingcar.repository.SpringDataJpaClassicWinnerRepository;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
 //import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +11,9 @@
 //@Controller
 //public class WinnerController {
 //
-//    private final SpringDataJpaWinnerRepository springDataJpaWinnerRepository;
+//    private final SpringDataJpaClassicWinnerRepository springDataJpaWinnerRepository;
 //
-//    public WinnerController(SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
+//    public WinnerController(SpringDataJpaClassicWinnerRepository springDataJpaWinnerRepository) {
 //        this.springDataJpaWinnerRepository = springDataJpaWinnerRepository;
 //    }
 //

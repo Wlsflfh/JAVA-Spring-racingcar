@@ -1,8 +1,8 @@
 package racingcar.controller;
 
 import org.springframework.web.bind.annotation.*;
-import racingcar.domain.Winners;
-import racingcar.repository.SpringDataJpaWinnerRepository;
+import racingcar.domain.ClassicWinners;
+import racingcar.repository.SpringDataJpaClassicWinnerRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
 public class WinnersApiController {
 
-    private final SpringDataJpaWinnerRepository springDataJpaWinnerRepository;
+    private final SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository;
 
-    public WinnersApiController(SpringDataJpaWinnerRepository springDataJpaWinnerRepository) {
-        this.springDataJpaWinnerRepository = springDataJpaWinnerRepository;
+    public WinnersApiController(SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository) {
+        this.springDataJpaClassicWinnerRepository = springDataJpaClassicWinnerRepository;
     }
 
     /**
@@ -23,9 +23,9 @@ public class WinnersApiController {
      */
     @GetMapping("/winners")
     public List<List<String>> getWinners() {
-        List<Winners> entities = springDataJpaWinnerRepository.findAll();
+        List<ClassicWinners> entities = springDataJpaClassicWinnerRepository.findAll();
         return entities.stream()
-                .map(Winners::getWinners)
+                .map(ClassicWinners::getWinners)
                 .collect(Collectors.toList());
     }
 }
