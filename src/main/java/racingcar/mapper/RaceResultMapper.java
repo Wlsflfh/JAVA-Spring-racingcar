@@ -10,27 +10,27 @@ import java.util.Map;
 @Component
 public class RaceResultMapper {
 
-    public List<Map<String, Integer>> toRaceHistory(List<List<RoundResult>> raceProgress) {
+    public List<List<Map<String, Integer>>> toRaceHistory(List<List<RoundResult>> raceProgress) {
         return raceProgress.stream()
-                .map(roundResults -> {
-                    Map<String, Integer> positions = new HashMap<>();
-                    for (RoundResult result : roundResults) {
-                        positions.put(result.getCarName(), result.getCurrentPosition());
-                    }
-                    return positions;
-                })
+                .map(roundResults -> roundResults.stream()
+                        .map(result -> {
+                            Map<String, Integer> carData = new HashMap<>();
+                            carData.put(result.getCarName(), result.getCurrentPosition());
+                            return carData;
+                        })
+                        .toList())
                 .toList();
     }
 
-    public List<Map<String, Integer>> toRandomNumbers(List<List<RoundResult>> raceProgress) {
+    public List<List<Map<String, Integer>>> toRandomNumbers(List<List<RoundResult>> raceProgress) {
         return raceProgress.stream()
-                .map(roundResults -> {
-                    Map<String, Integer> randoms = new HashMap<>();
-                    for (RoundResult result : roundResults) {
-                        randoms.put(result.getCarName(), result.getRandomNumber());
-                    }
-                    return randoms;
-                })
+                .map(roundResults -> roundResults.stream()
+                        .map(result -> {
+                            Map<String, Integer> carData = new HashMap<>();
+                            carData.put(result.getCarName(), result.getRandomNumber());
+                            return carData;
+                        })
+                        .toList())
                 .toList();
     }
 }
