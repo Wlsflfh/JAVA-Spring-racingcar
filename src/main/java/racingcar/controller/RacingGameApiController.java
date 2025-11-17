@@ -41,11 +41,11 @@ public class RacingGameApiController {
 
             racingGameService.saveClassicWinners(raceResultDto.getWinners());
 
-            List<Map<String, Integer>> raceHistory = raceResultMapper.toRaceHistory(raceResultDto.getRaceProgress());
+            List<Map<String, Integer>> classicRaceHistory = raceResultMapper.toRaceHistory(raceResultDto.getRaceProgress());
             List<Map<String, Integer>> randomNumbers = raceResultMapper.toRaceHistory(raceResultDto.getRaceProgress());
 
             Map<String, Object> response = new HashMap<>();
-            response.put("raceHistory", raceHistory);
+            response.put("raceHistory", classicRaceHistory);
             response.put("randomNumbers", randomNumbers);
             response.put("winners", raceResultDto.getWinners());
 
@@ -69,11 +69,11 @@ public class RacingGameApiController {
 
             racingGameService.saveItemWinners(itemRaceResultDto.getWinners());
 
-            List<Map<String, Integer>> raceHistory = raceResultMapper.toRaceHistory(itemRaceResultDto.getRaceProgress());
+            List<Map<String, Integer>> itemRaceHistory = raceResultMapper.toRaceHistory(itemRaceResultDto.getRaceProgress());
             List<Map<String, Integer>> itemNumbers = raceResultMapper.toRaceHistory(itemRaceResultDto.getRaceProgress());
 
             Map<String, Object> response = new HashMap<>();
-            response.put("raceHistory", raceHistory);
+            response.put("raceHistory", itemRaceHistory);
             response.put("randomNumbers", itemNumbers);
             response.put("winners", itemRaceResultDto.getWinners());
 

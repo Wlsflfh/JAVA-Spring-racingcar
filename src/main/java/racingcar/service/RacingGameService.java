@@ -71,7 +71,6 @@ public class RacingGameService {
 
         while (!goalReached) {
             List<RoundResult> roundResults = new ArrayList<>();
-            List<ItemResult> roundItems = new ArrayList<>();
 
             for (Car car : cars) {
                 int randomItemNumber = randomItemGenerator.generate();

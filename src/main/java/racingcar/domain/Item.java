@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 public enum Item {
+
     ITEM_0(5),
     ITEM_1(3),
     ITEM_2(1),
