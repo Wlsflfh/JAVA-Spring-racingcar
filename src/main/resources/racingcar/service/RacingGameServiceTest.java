@@ -55,7 +55,7 @@ class RacingGameServiceTest {
         var carNamesDto = racingGameService.getCarNames();
 
         // then
-        assertThat(carNamesDto.getCarNames()).containsExactlyInAnyOrder("pobi", "woni", "jun");
+        Assertions.assertThat(carNamesDto.getCarNames()).containsExactlyInAnyOrder("pobi", "woni", "jun");
     }
 
     @Test
@@ -70,9 +70,9 @@ class RacingGameServiceTest {
         RaceResultDto result = racingGameService.playClassicRace(attemptsCount);
 
         // then
-        assertThat(result.getRaceProgress()).hasSize(3);
-        assertThat(result.getRaceProgress().get(0)).isNotEmpty();
-        assertThat(result.getWinners()).isNotEmpty();
+        Assertions.assertThat(result.getRaceProgress()).hasSize(3);
+        Assertions.assertThat(result.getRaceProgress().get(0)).isNotEmpty();
+        Assertions.assertThat(result.getWinners()).isNotEmpty();
     }
 
     @Test
@@ -86,10 +86,10 @@ class RacingGameServiceTest {
 
         // then
         List<ClassicWinners> saved = classicWinnerRepository.findAll();
-        assertThat(saved).hasSize(1);
+        Assertions.assertThat(saved).hasSize(1);
 
         List<String> winnerNames = saved.get(0).getWinners();
-        assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
+        Assertions.assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
     }
 
     @Test
@@ -103,9 +103,9 @@ class RacingGameServiceTest {
 
         // then
         List<ItemWinners> saved = ItemWinnerRepository.findAll();
-        assertThat(saved).hasSize(1);
+        Assertions.assertThat(saved).hasSize(1);
 
         List<String> winnerNames = saved.get(0).getWinners();
-        assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
+        Assertions.assertThat(winnerNames).containsExactlyInAnyOrder("pobi", "woni");
     }
 }

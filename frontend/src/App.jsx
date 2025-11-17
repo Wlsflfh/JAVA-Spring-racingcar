@@ -2,7 +2,6 @@ import { useRacingGame } from './hooks/useRacingGame';
 import InputForm from './components/InputForm';
 import RacingScreen from './components/RacingScreen';
 import ResultScreen from './components/ResultScreen';
-import WinnersHistoryScreen from './components/WinnersHistoryScreen';
 
 /**
  * 메인 App 컴포넌트
@@ -18,8 +17,6 @@ function App() {
     startGame,
     resetGame,
     showResult,
-    showHistory,
-    backToInput,
   } = useRacingGame();
 
   return (
@@ -27,7 +24,6 @@ function App() {
       {gameState === 'input' && (
         <InputForm 
           onStartGame={startGame}
-          onShowHistory={showHistory}
           error={error}
         />
       )}
@@ -47,12 +43,6 @@ function App() {
           carNames={carNames}
           raceHistory={raceHistory}
           onRestart={resetGame}
-        />
-      )}
-
-      {gameState === 'history' && (
-        <WinnersHistoryScreen
-          onBack={backToInput}
         />
       )}
     </div>

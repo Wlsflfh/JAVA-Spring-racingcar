@@ -22,8 +22,8 @@ class CarTest {
         car2.move(notMoveValue);
 
         // then
-        assertEquals(car1.getPosition(), 1);
-        assertEquals(car2.getPosition(), 0);
+        Assertions.assertEquals(car1.getPosition(), 1);
+        Assertions.assertEquals(car2.getPosition(), 0);
     }
 
     @Test
@@ -34,11 +34,11 @@ class CarTest {
         String longCarName = "LooooongName";
 
         // when - then
-        assertThatThrownBy(() -> new Car(shortCarName))
+        Assertions.assertThatThrownBy(() -> new Car(shortCarName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 1글자 이상이여야 합니다.");
 
-        assertThatThrownBy(() -> new Car(longCarName))
+        Assertions.assertThatThrownBy(() -> new Car(longCarName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("자동차 이름은 5글자 이하여야 합니다.");
     }

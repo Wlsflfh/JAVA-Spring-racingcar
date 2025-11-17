@@ -3,7 +3,7 @@ import { useState } from 'react';
 /**
  * 자동차 이름과 시도 횟수를 입력받는 폼 컴포넌트
  */
-const InputForm = ({ onStartGame, onShowHistory, error }) => {
+const InputForm = ({ onStartGame, error }) => {
   const [carNamesInput, setCarNamesInput] = useState('');
   const [roundCountInput, setRoundCountInput] = useState('');
 
@@ -74,14 +74,6 @@ const InputForm = ({ onStartGame, onShowHistory, error }) => {
             className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition duration-200 shadow-lg"
           >
             🏁 경주 시작
-          </button>
-
-          <button
-            type="button"
-            onClick={onShowHistory}
-            className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-4 rounded-lg hover:from-yellow-600 hover:to-orange-700 transform hover:scale-105 transition duration-200 shadow-lg"
-          >
-            🏆 역대 우승자 보기
           </button>
         </form>
 
