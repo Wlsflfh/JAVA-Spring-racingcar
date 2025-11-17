@@ -1,11 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useRacingGame } from './hooks/useRacingGame';
 import InputForm from './components/InputForm';
 import RacingScreen from './components/RacingScreen';
 import ResultScreen from './components/ResultScreen';
-import Winners from './components/Winners';
+import WinnersHistoryScreen from './components/WinnersHistoryScreen';
 
-function HomeGameRouter() {
+/**
+ * 메인 App 컴포넌트
+ */
+function App() {
   const {
     gameState,
     carNames,
@@ -16,42 +18,46 @@ function HomeGameRouter() {
     startGame,
     resetGame,
     showResult,
+    showHistory,
+    backToInput,
   } = useRacingGame();
 
   return (
-      <div className="App">
-        {gameState === 'input' && (
-            <InputForm onStartGame={startGame} error={error} />
-        )}
-        {gameState === 'racing' && (
-            <RacingScreen
-                carNames={carNames}
-                raceHistory={raceHistory}
-                randomNumbers={randomNumbers}
-                onComplete={showResult}
-            />
-        )}
-        {gameState === 'result' && (
-            <ResultScreen
-                winners={winners}
-                carNames={carNames}
-                raceHistory={raceHistory}
-                onRestart={resetGame}
-            />
-        )}
-      </div>
-  );
-}
+    <div className="App">
+      {gameState === 'input' && (
+        <InputForm 
+          onStartGame={startGame}
+          onShowHistory={showHistory}
+          error={error}
+        />
+      )}
 
-function App() {
-  return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomeGameRouter />} />
-          <Route path="/winners" element={<Winners />} />
-        </Routes>
-      </BrowserRouter>
+      {gameState === 'racing' && (
+        <RacingScreen
+          carNames={carNames}
+          raceHistory={raceHistory}
+          randomNumbers={randomNumbers}
+          onComplete={showResult}
+        />
+      )}
+
+      {gameState === 'result' && (
+        <ResultScreen
+          winners={winners}
+          carNames={carNames}
+          raceHistory={raceHistory}
+          onRestart={resetGame}
+        />
+      )}
+
+      {gameState === 'history' && (
+        <WinnersHistoryScreen
+          onBack={backToInput}
+        />
+      )}
+    </div>
   );
 }
 
 export default App;
+

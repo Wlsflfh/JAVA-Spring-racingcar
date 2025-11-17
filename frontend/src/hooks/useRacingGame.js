@@ -6,7 +6,7 @@ import { validateInput } from '../utils/validator';
  * 자동차 경주 게임 로직을 관리하는 커스텀 훅
  */
 export const useRacingGame = () => {
-  const [gameState, setGameState] = useState('input'); // 'input', 'racing', 'result'
+  const [gameState, setGameState] = useState('input'); // 'input', 'racing', 'result', 'history'
   const [carNames, setCarNames] = useState([]);
   const [roundCount, setRoundCount] = useState(0);
   const [raceHistory, setRaceHistory] = useState([]); // 각 라운드별 자동차 위치
@@ -69,6 +69,21 @@ export const useRacingGame = () => {
     setLoading(false);
   };
 
+  /**
+   * 역대 우승자 화면으로 이동
+   */
+  const showHistory = () => {
+    setGameState('history');
+  };
+
+  /**
+   * 입력 화면으로 돌아가기
+   */
+  const backToInput = () => {
+    setGameState('input');
+    setError(null);
+  };
+
   return {
     gameState,
     carNames,
@@ -81,6 +96,8 @@ export const useRacingGame = () => {
     startGame,
     resetGame,
     showResult,
+    showHistory,
+    backToInput,
   };
 };
 

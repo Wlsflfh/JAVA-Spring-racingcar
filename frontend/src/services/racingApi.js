@@ -3,8 +3,7 @@
  */
 
 const API_BASE_URL = '/api';
-const USE_MOCK = false; // 백엔드 없이 테스트할 때 true, 실제 API 사용시 false
-
+const USE_MOCK = false; // 백엔드 없이 테스트할 때 true, 실제 API 사용시 false 
 /**
  * Mock 데이터 생성 (테스트용)
  */
@@ -99,6 +98,25 @@ export const getRacingStatus = async (gameId) => {
     return await response.json();
   } catch (error) {
     console.error('Racing Status API Error:', error);
+    throw error;
+  }
+};
+
+/**
+ * 역대 우승자 목록 조회
+ * @returns {Promise<Array<Array<string>>>} 역대 우승자 목록 (예: [["pobi", "woni"], ["jun"]])
+ */
+export const getWinnersHistory = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/winners`);
+    
+    if (!response.ok) {
+      throw new Error('역대 우승자 조회에 실패했습니다.');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Winners History API Error:', error);
     throw error;
   }
 };
