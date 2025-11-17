@@ -3,7 +3,7 @@ import { useState } from 'react';
 /**
  * 아이템 모드 - 자동차 이름과 목표 거리를 입력받는 폼 컴포넌트
  */
-const ItemModeInputForm = ({ onStartGame, onBack, error }) => {
+const ItemModeInputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
   const [carNamesInput, setCarNamesInput] = useState('');
   const [targetDistance, setTargetDistance] = useState('');
 
@@ -90,6 +90,14 @@ const ItemModeInputForm = ({ onStartGame, onBack, error }) => {
             className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-3 px-4 rounded-lg hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition duration-200 shadow-lg"
           >
             🎁 아이템 경주 시작
+          </button>
+
+          <button
+            type="button"
+            onClick={onShowHistory}
+            className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-3 px-4 rounded-lg hover:from-yellow-600 hover:to-orange-700 transform hover:scale-105 transition duration-200 shadow-lg"
+          >
+            🏆 역대 우승자 보기
           </button>
         </form>
 

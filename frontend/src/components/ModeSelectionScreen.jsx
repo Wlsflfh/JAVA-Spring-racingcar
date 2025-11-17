@@ -1,8 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 /**
  * 게임 모드 선택 화면 컴포넌트
  * 클래식 모드와 아이템 모드 중 하나를 선택할 수 있습니다.
  */
-function ModeSelectionScreen({ onSelectMode }) {
+function ModeSelectionScreen() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
       {/* 배경 레이어 */}
@@ -45,7 +49,7 @@ function ModeSelectionScreen({ onSelectMode }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 클래식 모드 카드 */}
           <button
-            onClick={() => onSelectMode('classic')}
+            onClick={() => navigate('/classic')}
             className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:scale-105"
           >
             <div className="text-6xl mb-4">🏁</div>
@@ -61,7 +65,7 @@ function ModeSelectionScreen({ onSelectMode }) {
 
           {/* 아이템 모드 카드 */}
           <button
-            onClick={() => onSelectMode('item')}
+            onClick={() => navigate('/item')}
             className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center group hover:scale-105"
           >
             <div className="text-6xl mb-4">🎁</div>

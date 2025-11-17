@@ -7,7 +7,8 @@ const ItemModeResultScreen = ({
   finalPositions,
   targetDistance,
   totalRounds,
-  onRestart 
+  onRestart,
+  onShowHistory
 }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 flex items-center justify-center p-4">
@@ -101,12 +102,18 @@ const ItemModeResultScreen = ({
         </div>
 
         {/* 버튼 */}
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-3">
           <button
             onClick={onRestart}
-            className="flex-1 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition duration-200 shadow-lg"
+            className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold py-4 px-6 rounded-xl hover:from-purple-600 hover:to-pink-700 transform hover:scale-105 transition duration-200 shadow-lg"
           >
             🔄 다시 시작
+          </button>
+          <button
+            onClick={onShowHistory}
+            className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-4 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transform hover:scale-105 transition duration-200 shadow-lg"
+          >
+            🏆 역대 우승자 보기
           </button>
         </div>
 
