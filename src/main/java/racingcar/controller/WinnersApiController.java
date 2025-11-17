@@ -2,30 +2,39 @@ package racingcar.controller;
 
 import org.springframework.web.bind.annotation.*;
 import racingcar.domain.ClassicWinners;
+import racingcar.domain.ItemWinners;
 import racingcar.repository.SpringDataJpaClassicWinnerRepository;
+import racingcar.repository.SpringDataJpaItemWinnerRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/racing")
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
 public class WinnersApiController {
 
     private final SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository;
+    private final SpringDataJpaItemWinnerRepository springDataJpaItemWinnerRepository;
 
-    public WinnersApiController(SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository) {
+    public WinnersApiController(SpringDataJpaClassicWinnerRepository springDataJpaClassicWinnerRepository, SpringDataJpaItemWinnerRepository springDataJpaItemWinnerRepository) {
         this.springDataJpaClassicWinnerRepository = springDataJpaClassicWinnerRepository;
+        this.springDataJpaItemWinnerRepository = springDataJpaItemWinnerRepository;
     }
 
-    /**
-     * 역대 우승자 목록 반환 (예시: [["pobi", "woni"], ["jun"]])
-     */
-    @GetMapping("/winners")
-    public List<List<String>> getWinners() {
+    @GetMapping("/classic/winners")
+    public List<List<String>> getClassicWinners() {
         List<ClassicWinners> entities = springDataJpaClassicWinnerRepository.findAll();
         return entities.stream()
                 .map(ClassicWinners::getWinners)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/item/winners")
+    public List<List<String>> getItemWinners() {
+        List<ItemWinners> entities = springDataJpaItemWinnerRepository.findAll();
+        return entities.stream()
+                .map(ItemWinners::getWinners)
                 .collect(Collectors.toList());
     }
 }
