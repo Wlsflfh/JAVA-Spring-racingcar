@@ -3,7 +3,7 @@ import { useItemModeGame } from '../hooks/useItemModeGame';
 import ItemModeInputForm from '../components/ItemModeInputForm';
 import ItemModeRacingScreen from '../components/ItemModeRacingScreen';
 import ItemModeResultScreen from '../components/ItemModeResultScreen';
-import WinnersHistoryScreen from '../components/WinnersHistoryScreen';
+import ItemModeWinnersHistoryScreen from '../components/ItemModeWinnersHistoryScreen';
 
 /**
  * 아이템 모드 페이지
@@ -115,7 +115,7 @@ function ItemModePage() {
       <Route 
         path="/history" 
         element={
-          <WinnersHistoryScreen
+          <ItemModeWinnersHistoryScreen
             onBack={handleBackFromHistory}
           />
         } 

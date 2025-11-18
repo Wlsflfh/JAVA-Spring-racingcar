@@ -27,7 +27,7 @@ const ItemModeInputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
 
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-            🎁 자동차 경주
+            <span className="text-black">🎁</span> 자동차 경주
           </h1>
           <p className="text-gray-600 font-semibold">아이템 모드</p>
           <div className="mt-2 inline-block bg-gradient-to-r from-purple-100 to-pink-100 px-4 py-2 rounded-full">
@@ -39,7 +39,7 @@ const ItemModeInputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label 
+          <label
               htmlFor="carNames" 
               className="block text-sm font-medium text-gray-700 mb-2"
             >

@@ -139,20 +139,39 @@ export const getRacingStatus = async (gameId) => {
 };
 
 /**
- * 역대 우승자 목록 조회
+ * 클래식 모드 역대 우승자 목록 조회
  * @returns {Promise<Array<Array<string>>>} 역대 우승자 목록 (예: [["pobi", "woni"], ["jun"]])
  */
-export const getWinnersHistory = async () => {
+export const getClassicWinnersHistory = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/classic/winners`);
 
     if (!response.ok) {
-      throw new Error('역대 우승자 조회에 실패했습니다.');
+      throw new Error('클랫식 모드 역대 우승자 조회에 실패했습니다.');
     }
 
     return await response.json();
   } catch (error) {
-    console.error('Winners History API Error:', error);
+    console.error('Classic Mode Winners History API Error:', error);
+    throw error;
+  }
+};
+
+/**
+ * 아이템 모드 역대 우승자 목록 조회
+ * @returns {Promise<Array<Array<string>>>} 역대 우승자 목록 (예: [["pobi", "woni"], ["jun"]])
+ */
+export const getItemWinnersHistory = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/item/winners`);
+
+    if (!response.ok) {
+      throw new Error('아이템 모드 역대 우승자 조회에 실패했습니다.');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Item Mode Winners History API Error:', error);
     throw error;
   }
 };

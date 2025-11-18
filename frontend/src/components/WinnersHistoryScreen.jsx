@@ -1,19 +1,16 @@
 import { useState, useEffect } from 'react';
-import { getWinnersHistory } from '../services/racingApi';
+import { getClassicWinnersHistory } from '../services/racingApi';
 
-/**
- * 역대 우승자 기록 화면 컴포넌트
- */
 const WinnersHistoryScreen = ({ onBack }) => {
   const [winnersHistory, setWinnersHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchWinnersHistory = async () => {
+    const fetchClassicWinnersHistory = async () => {
       try {
         setLoading(true);
-        const history = await getWinnersHistory();
+        const history = await getClassicWinnersHistory();
         setWinnersHistory(history);
         setError(null);
       } catch (err) {
@@ -23,7 +20,7 @@ const WinnersHistoryScreen = ({ onBack }) => {
       }
     };
 
-    fetchWinnersHistory();
+    fetchClassicWinnersHistory();
   }, []);
 
   if (loading) {
@@ -58,7 +55,7 @@ const WinnersHistoryScreen = ({ onBack }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-purple-50 to-blue-50">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl w-full">
         <div className="text-center mb-8">
           <div className="text-6xl mb-4">🏆</div>
