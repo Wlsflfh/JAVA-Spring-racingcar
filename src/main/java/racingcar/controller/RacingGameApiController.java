@@ -30,7 +30,7 @@ public class RacingGameApiController {
     }
 
     @PostMapping("/classic")
-    public ResponseEntity<?> startRacing(@RequestBody RacingRequest request) {
+    public ResponseEntity<?> startClassicMode(@RequestBody RacingRequest request) {
         try {
             String carNamesStr = String.join(",", request.getCarNames());
             Cars cars = new Cars(carNamesStr);
@@ -58,7 +58,7 @@ public class RacingGameApiController {
     }
 
     @PostMapping("/item")
-    public ResponseEntity<?> itemMode(@RequestBody RacingRequest request) {
+    public ResponseEntity<?> startItemMode(@RequestBody RacingRequest request) {
         try {
             String carNamesStr = String.join(",", request.getCarNames());
             Cars cars = new Cars(carNamesStr);
