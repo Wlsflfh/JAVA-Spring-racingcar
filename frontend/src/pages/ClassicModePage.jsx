@@ -48,7 +48,8 @@ function ClassicModePage() {
    * 역대 우승자 보기
    */
   const handleShowHistory = () => {
-    navigate('/classic/history');
+    navigate('/classic/h' +
+        'istory');
   };
 
   /**

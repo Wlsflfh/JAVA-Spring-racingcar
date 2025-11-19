@@ -3,7 +3,7 @@ package racingcar.domain;
 public class GoalDistance {
 
     private static final int MIN_DISTANCE_COUNT = 10;
-    private static final int MAX_DISTANCE_COUNT = 50;
+    private static final int MAX_DISTANCE_COUNT = 100;
 
     private final int goalDistance;
 
@@ -18,7 +18,7 @@ public class GoalDistance {
         }
 
         if (goalDistance > MAX_DISTANCE_COUNT) {
-            throw new IllegalArgumentException("목표 거리는 50회 이하여야 합니다.");
+            throw new IllegalArgumentException("목표 거리는 100회 이하여야 합니다.");
         }
     }
 

@@ -67,7 +67,7 @@ public class RacingGameApiController {
             GoalDistance goalDistance = new GoalDistance(request.getRoundCount());
             RaceResultDto itemRaceResultDto = racingGameService.playItemRace(goalDistance);
 
-            racingGameService.saveItemWinners(itemRaceResultDto.getWinners());
+            if (!itemRaceResultDto.getWinners().isEmpty()) racingGameService.saveItemWinners(itemRaceResultDto.getWinners());
 
             List<List<Map<String, Integer>>> itemRaceHistory = raceResultMapper.toRaceHistory(itemRaceResultDto.getRaceProgress());
             List<List<Map<String, Integer>>> itemNumbers = raceResultMapper.toRandomNumbers(itemRaceResultDto.getRaceProgress());

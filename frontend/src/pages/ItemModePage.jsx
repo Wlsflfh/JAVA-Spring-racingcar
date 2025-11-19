@@ -95,7 +95,7 @@ function ItemModePage() {
       <Route 
         path="/result" 
         element={
-          itemMode.winners.length > 0 ? (
+          itemMode.carNames.length > 0 ? (
             <ItemModeResultScreen
               winners={itemMode.winners}
               carNames={itemMode.carNames}

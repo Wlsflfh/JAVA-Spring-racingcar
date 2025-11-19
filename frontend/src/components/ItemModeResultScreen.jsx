@@ -13,23 +13,42 @@ const ItemModeResultScreen = ({
   return (
       <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 flex items-center justify-center p-4">
         <div className="max-w-2xl w-full">
-          {/* 우승 축하 */}
-          <div className="text-center mb-8 animate-bounce">
-            <div className="text-8xl mb-4">🏆</div>
-            <h1 className="text-5xl font-bold text-white mb-4">
-              우승을 축하합니다!
-            </h1>
-            <div className="text-3xl font-bold text-yellow-400">
-              {winners.map((winner, index) => (
-                  <span key={winner}>
-                {winner}
-                    {index < winners.length - 1 && ', '}
-              </span>
-              ))}
-            </div>
-          </div>
+            {/* 우승 축하 or 무승부 */}
+            <div className="text-center mb-8 animate-bounce">
 
-          {/* 게임 통계 */}
+                {/* DRAW */}
+                {winners.length === 0 ? (
+                    <>
+                        <div className="text-8xl mb-4">🤝</div>
+                        <h1 className="text-5xl font-bold text-white mb-4">
+                            무승부!
+                        </h1>
+                        <div className="text-2xl text-white/70">
+                            최대 라운드까지 승자가 나오지 않았습니다.
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        {/* 기존 우승자 UI */}
+                        <div className="text-8xl mb-4">🏆</div>
+                        <h1 className="text-5xl font-bold text-white mb-4">
+                            우승을 축하합니다!
+                        </h1>
+                        <div className="text-3xl font-bold text-yellow-400">
+                            {winners.map((winner, index) => (
+                                <span key={winner}>
+                {winner}
+                                    {index < winners.length - 1 && ', '}
+              </span>
+                            ))}
+                        </div>
+                    </>
+                )}
+
+            </div>
+
+
+            {/* 게임 통계 */}
           <div className="bg-white/95 backdrop-blur rounded-2xl shadow-2xl p-8 mb-6">
             <div className="grid grid-cols-2 gap-6 mb-6">
               <div className="text-center p-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
