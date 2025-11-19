@@ -33,7 +33,7 @@ const ItemModeResultScreen = ({
           <div className="bg-white/95 backdrop-blur rounded-2xl shadow-2xl p-8 mb-6">
             <div className="grid grid-cols-2 gap-6 mb-6">
               <div className="text-center p-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
-                <div className="text-3xl font-bold text-purple-600">{totalRounds}</div>
+                <div className="text-3xl font-bold text-purple-600">{totalRounds + 1}</div>
                 <div className="text-sm text-gray-600 mt-1">총 라운드</div>
               </div>
               <div className="text-center p-4 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
