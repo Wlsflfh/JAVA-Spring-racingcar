@@ -24,7 +24,8 @@ function ClassicModePage() {
    * 게임 시작 핸들러
    */
   const handleStartGame = async (carNames, attemptCount) => {
-    await classicMode.startGame(carNames, attemptCount);
+    const ok= await classicMode.startGame(carNames, attemptCount);
+    if (!ok) return;
     navigate('/classic/race');
   };
 

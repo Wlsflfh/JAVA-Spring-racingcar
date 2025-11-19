@@ -24,8 +24,9 @@ function ItemModePage() {
    * 게임 시작 핸들러
    */
   const handleStartGame = async (carNames, targetDistance) => {
-    await itemMode.startGame(carNames, targetDistance);
-    navigate('/item/race');
+      const ok = await itemMode.startGame(carNames, targetDistance);
+      if (!ok) return;
+      navigate('/item/race');
   };
 
   /**

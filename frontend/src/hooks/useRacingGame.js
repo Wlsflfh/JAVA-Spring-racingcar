@@ -40,10 +40,11 @@ export const useRacingGame = () => {
       
       // 경주 애니메이션 시작
       setGameState('racing');
-      
+      return true;
     } catch (err) {
       setError(err.message);
       setLoading(false);
+      return false;
     }
   };
 

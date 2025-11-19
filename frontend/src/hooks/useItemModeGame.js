@@ -44,10 +44,11 @@ export const useItemModeGame = () => {
       
       // 레이싱 애니메이션 시작
       setGameState('racing');
-      
+      return true;
     } catch (err) {
       setError(err.message);
-      setLoading(false);
+      setLoading(false)
+      return false;
     }
   };
 

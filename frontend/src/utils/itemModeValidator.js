@@ -30,14 +30,6 @@ export const validateItemModeInput = (carNames, targetDistance) => {
     throw new Error('목표 거리를 입력해주세요.');
   }
 
-  if (distance < VALIDATION.MIN_TARGET_DISTANCE) {
-    throw new Error(`목표 거리는 최소 ${VALIDATION.MIN_TARGET_DISTANCE}칸 이상이어야 합니다.`);
-  }
-
-  if (distance > VALIDATION.MAX_TARGET_DISTANCE) {
-    throw new Error(`목표 거리는 최대 ${VALIDATION.MAX_TARGET_DISTANCE}칸 이하여야 합니다.`);
-  }
-
   return true;
 };
 
