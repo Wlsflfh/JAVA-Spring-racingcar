@@ -71,7 +71,7 @@ const WinnersHistoryScreen = ({ onBack }) => {
           </div>
         ) : (
           <div className="space-y-4 mb-8 max-h-[500px] overflow-y-auto">
-            {winnersHistory.map((winners, index) => (
+            {winnersHistory.slice().reverse().map((winners, index) => (
               <div 
                 key={index}
                 className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-xl p-5 hover:shadow-lg transition duration-200"

@@ -72,7 +72,7 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
                     </div>
                 ) : (
                     <div className="space-y-4 mb-8 max-h-[500px] overflow-y-auto">
-                        {winnersHistory.map((winners, index) => (
+                        {winnersHistory.slice().reverse().map((winners, index) => (
                             <div
                                 key={index}
                                 className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-xl p-5 hover:shadow-lg transition duration-200"
@@ -84,7 +84,7 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
                                     <div className="flex-1">
                                         <p className="text-sm text-gray-600 mb-1">우승자</p>
                                         <div className="flex flex-wrap gap-2">
-                                            {winnersHistory.slice().reverse().map((winners, index) => (
+                                            {winners.map((winner, winnerIndex) => (
                                                 <span
                                                     key={winnerIndex}
                                                     className="bg-white px-4 py-2 rounded-full text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600 shadow-md border-2 border-yellow-300"
