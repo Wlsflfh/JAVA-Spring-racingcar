@@ -84,7 +84,7 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
                                     <div className="flex-1">
                                         <p className="text-sm text-gray-600 mb-1">우승자</p>
                                         <div className="flex flex-wrap gap-2">
-                                            {winners.map((winner, winnerIndex) => (
+                                            {winnersHistory.slice().reverse().map((winners, index) => (
                                                 <span
                                                     key={winnerIndex}
                                                     className="bg-white px-4 py-2 rounded-full text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-orange-600 shadow-md border-2 border-yellow-300"
