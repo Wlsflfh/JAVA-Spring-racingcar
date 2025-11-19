@@ -25,7 +25,7 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 flex items-center justify-center p-4">
                 <div className="text-center">
                     <div className="text-6xl mb-4 animate-spin">🏆</div>
                     <p className="text-gray-600">역대 우승자 기록을 불러오는 중...</p>
@@ -36,7 +36,7 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
 
     if (error) {
         return (
-            <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 flex items-center justify-center p-4">
                 <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full">
                     <div className="text-center">
                         <div className="text-6xl mb-4">❌</div>
@@ -55,7 +55,6 @@ const ItemModeWinnersHistoryScreen = ({ onBack }) => {
     }
 
     return (
-        // <div className="min-h-screen flex items-center justify-center p-4">
         <div className="min-h-screen bg-gradient-to-br from-purple-900 via-pink-900 to-indigo-900 flex items-center justify-center p-4">
             <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl w-full">
                 <div className="text-center mb-8">
