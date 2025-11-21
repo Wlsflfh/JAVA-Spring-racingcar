@@ -1,10 +1,7 @@
 package racingcar.domain.random;
 
-import org.springframework.stereotype.Component;
-
 import java.util.concurrent.ThreadLocalRandom;
 
-@Component
 public class CarRandomMoveGenerator implements RandomNumberGenerator {
 
     private static final int RANDOM_LOWER_INCLUSIVE = 0;
