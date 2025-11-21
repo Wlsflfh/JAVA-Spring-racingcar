@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getClassicWinnersHistory } from '../services/racingApi';
 
-const WinnersHistoryScreen = ({ onBack }) => {
+const ClassicModeWinnersHistoryScreen = ({ onBack }) => {
   const [winnersHistory, setWinnersHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -116,5 +116,5 @@ const WinnersHistoryScreen = ({ onBack }) => {
   );
 };
 
-export default WinnersHistoryScreen;
+export default ClassicModeWinnersHistoryScreen;
 

@@ -15,9 +15,9 @@
 frontend/
 ├── src/
 │   ├── components/          # React 컴포넌트
-│   │   ├── InputForm.jsx    # 입력 폼 컴포넌트
-│   │   ├── RacingScreen.jsx # 경주 진행 화면
-│   │   └── ResultScreen.jsx # 결과 화면
+│   │   ├── ClassicModeInputForm.jsx    # 입력 폼 컴포넌트
+│   │   ├── ClassicModeRacingScreen.jsx # 경주 진행 화면
+│   │   └── ClassicModeResultScreen.jsx # 결과 화면
 │   ├── hooks/               # 커스텀 훅
 │   │   └── useRacingGame.js # 게임 로직 관리 훅
 │   ├── services/            # API 서비스
@@ -58,19 +58,19 @@ npm run build
 
 ## 🎮 주요 기능
 
-### 1. 입력 화면 (`InputForm`)
+### 1. 입력 화면 (`ClassicModeInputForm`)
 - 자동차 이름 입력 (쉼표로 구분, 5자 이하)
 - 시도 횟수 입력 (자연수)
 - 클라이언트 측 유효성 검증
 - 에러 메시지 표시
 
-### 2. 경주 화면 (`RacingScreen`)
+### 2. 경주 화면 (`ClassicModeRacingScreen`)
 - 실시간 경주 진행 애니메이션
 - 각 자동차의 위치를 시각적으로 표시
 - 라운드별 순차 진행
 - 프로그레스 바 애니메이션
 
-### 3. 결과 화면 (`ResultScreen`)
+### 3. 결과 화면 (`ClassicModeResultScreen`)
 - 최종 우승자 표시
 - 전체 순위 표시
 - 다시 시작 기능

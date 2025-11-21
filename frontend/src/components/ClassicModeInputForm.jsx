@@ -3,7 +3,7 @@ import { useState } from 'react';
 /**
  * 자동차 이름과 시도 횟수를 입력받는 폼 컴포넌트
  */
-const InputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
+const ClassicModeInputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
   const [carNamesInput, setCarNamesInput] = useState('');
   const [roundCountInput, setRoundCountInput] = useState('');
 
@@ -107,4 +107,4 @@ const InputForm = ({ onStartGame, onShowHistory, onBack, error }) => {
   );
 };
 
-export default InputForm;
+export default ClassicModeInputForm;

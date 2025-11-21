@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { useRacingGame } from '../hooks/useRacingGame';
-import InputForm from '../components/InputForm';
-import RacingScreen from '../components/RacingScreen';
-import ResultScreen from '../components/ResultScreen';
-import WinnersHistoryScreen from '../components/WinnersHistoryScreen';
+import ClassicModeInputForm from '../components/ClassicModeInputForm.jsx';
+import ClassicModeRacingScreen from '../components/ClassicModeRacingScreen.jsx';
+import ClassicModeResultScreen from '../components/./ClassicModeResultScreen.jsx';
+import ClassicModeWinnersHistoryScreen from '../components/ClassicModeWinnersHistoryScreen.jsx';
 
 /**
  * 클래식 모드 페이지
@@ -49,8 +49,7 @@ function ClassicModePage() {
    * 역대 우승자 보기
    */
   const handleShowHistory = () => {
-    navigate('/classic/h' +
-        'istory');
+    navigate('/classic/history');
   };
 
   /**
@@ -66,7 +65,7 @@ function ClassicModePage() {
       <Route 
         path="/" 
         element={
-          <InputForm 
+          <ClassicModeInputForm
             onStartGame={handleStartGame}
             onShowHistory={handleShowHistory}
             onBack={handleBackToModeSelection}
@@ -80,7 +79,7 @@ function ClassicModePage() {
         path="/race" 
         element={
           classicMode.carNames.length > 0 ? (
-            <RacingScreen
+            <ClassicModeRacingScreen
               carNames={classicMode.carNames}
               raceHistory={classicMode.raceHistory}
               randomNumbers={classicMode.randomNumbers}
@@ -97,11 +96,12 @@ function ClassicModePage() {
         path="/result" 
         element={
           classicMode.winners.length > 0 ? (
-            <ResultScreen
+            <ClassicModeResultScreen
               winners={classicMode.winners}
               carNames={classicMode.carNames}
               raceHistory={classicMode.raceHistory}
               onRestart={handleRestart}
+              onShowHistory={handleShowHistory}
             />
           ) : (
             <Navigate to="/classic" replace />
@@ -113,7 +113,7 @@ function ClassicModePage() {
       <Route 
         path="/history" 
         element={
-          <WinnersHistoryScreen
+          <ClassicModeWinnersHistoryScreen
             onBack={handleBackFromHistory}
           />
         } 

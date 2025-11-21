@@ -1,7 +1,8 @@
 /**
  * 경주 결과 화면 컴포넌트
  */
-const ResultScreen = ({ winners, carNames, raceHistory, onRestart }) => {
+
+const ClassicModeResultScreen = ({ winners, carNames, raceHistory, onRestart , onShowHistory}) => {
   const finalPositions = raceHistory[raceHistory.length - 1] || {};
   const maxPosition = Math.max(...Object.values(finalPositions));
 
@@ -79,12 +80,18 @@ const ResultScreen = ({ winners, carNames, raceHistory, onRestart }) => {
           </div>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col gap-3">
           <button
-            onClick={onRestart}
-            className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition duration-200 shadow-lg"
+              onClick={onRestart}
+              className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition duration-200 shadow-lg"
           >
             🔄 다시 시작
+          </button>
+          <button
+              onClick={onShowHistory}
+              className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold py-4 px-6 rounded-xl hover:from-yellow-600 hover:to-orange-700 transform hover:scale-105 transition duration-200 shadow-lg"
+          >
+            🏆 역대 우승자 보기
           </button>
         </div>
 
@@ -96,6 +103,6 @@ const ResultScreen = ({ winners, carNames, raceHistory, onRestart }) => {
   );
 };
 
-export default ResultScreen;
+export default ClassicModeResultScreen;
 
 

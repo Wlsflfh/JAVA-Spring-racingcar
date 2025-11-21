@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 /**
  * 경주 진행 화면 컴포넌트
  */
-const RacingScreen = ({ carNames, raceHistory, randomNumbers, onComplete }) => {
+const ClassicModeRacingScreen = ({ carNames, raceHistory, randomNumbers, onComplete }) => {
   const [currentRound, setCurrentRound] = useState(0);
   const [displayedPositions, setDisplayedPositions] = useState(
     carNames.reduce((acc, name) => ({ ...acc, [name]: 0 }), {})
@@ -119,6 +119,6 @@ const RacingScreen = ({ carNames, raceHistory, randomNumbers, onComplete }) => {
   );
 };
 
-export default RacingScreen;
+export default ClassicModeRacingScreen;
 
 
